@@ -1,0 +1,32 @@
+services:
+  db:
+    image: mysql:8.4
+    container_name: objet_db
+    volumes:
+      - objet_data:/var/lib/mysql
+      - ./database:/root/database
+      - ./build_docker/mysql_conf/my.cnf:/etc/mysql/conf.d/my.cnf      
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pwd
+
+  web:
+    depends_on:
+      - db
+    container_name: objet_web
+    build:
+      context: build_docker
+      dockerfile: Dockerfile-web
+    volumes:
+      - ./public:/var/www/html
+      - ./src:/var/www/html/src
+      - ./build_docker/app_config:/var/www/html/app_config
+    ports:
+      - "8020:80"       
+    deploy:
+      restart_policy:
+        condition: none
+
+volumes:
+  objet_data:
+    
