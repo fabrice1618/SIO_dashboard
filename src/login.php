@@ -16,8 +16,8 @@
             <?php endif; ?>
             <form action="auth.php" method="POST">
                 <div class="mb-3">
-                    <label>Email</label>
-                    <input type="email" name="email" class="form-control" required />
+                    <label>Identifiant</label>
+                    <input type="identifiant" name="identifiant" class="form-control" required />
                 </div>
                 <div class="mb-3">
                     <label>Mot de passe</label>
