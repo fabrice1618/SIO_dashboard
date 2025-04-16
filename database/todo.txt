@@ -1,0 +1,9 @@
+fichier load_dashboard
+
+$ ./shell_in objet_db
+
+bash-5.1# cd /root/database
+
+$ mysql --local-infile -u root -p
+
+source initial_bdd.sql;
