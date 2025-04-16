@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($stmt->rowCount() === 1) {
         $_SESSION['user'] = $identifiant;
-        header("Location: index.html");
+        header("Location: dashboard.html");
         exit;
     } else {
         $_SESSION['error'] = "identifiant ou mot de passe incorrect.";
