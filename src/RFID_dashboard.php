@@ -23,7 +23,6 @@
             <ul class="list-group list-group-flush mt-3">
               <li class="list-group-item">🧑‍💼 Nom : <strong>Turing</strong></li>
               <li class="list-group-item">📝 Prénom : <strong>Alan</strong></li>
-              <li class="list-group-item">⚡ Gâche Electrique : <strong>Activé</strong></li>
             </ul>
           </div>
         </div>
@@ -58,24 +57,6 @@
                   <td>Turing</td>
                   <td>Alan</td>
                   <td>aF93cB71eD2kXz</td>
-                </tr>
-                <tr>
-                  <td>09/04/2025</td>
-                  <td>14:24</td>
-                  <td>Gache elec</td>
-                  <td>OK</td>
-                  <td>--</td>
-                  <td>--</td>
-                  <td>Activé</td>
-                </tr>
-                <tr>
-                  <td>09/04/2025</td>
-                  <td>14:25</td>
-                  <td>Gache elec</td>
-                  <td>OK</td>
-                  <td>--</td>
-                  <td>--</td>
-                  <td>Désactivé</td>
                 </tr>
                 <tr>
                   <td>09/04/2025</td>
