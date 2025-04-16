@@ -1,3 +1,12 @@
+<?php
+require_once("database.php");
+require_once("rfid.php");
+
+openDatabase();
+$rfidData = getRFID();
+closeDatabase();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -31,49 +40,38 @@
     </br>
 
     <!-- Deuxième div : Tableau -->
-    <div>
-      <div>
-        <div class="card shadow rounded-4">
-          <div class="card-body">
-            <h4 class="card-title">Historique des données</h4>
-            <table class="table table-striped mt-3">
-              <thead>
+    <!-- Tableau dynamique RFID -->
+    <div class="card shadow rounded-4">
+      <div class="card-body">
+        <h4 class="card-title">Historique RFID Autorisés</h4>
+        <table class="table table-striped mt-3">
+          <thead>
+            <tr>
+              <th>Code RFID</th>
+              <th>État</th>
+              <th>Nom</th>
+              <th>Prénom</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php if (!empty($rfidData)) : ?>
+              <?php foreach ($rfidData as $row) : ?>
                 <tr>
-                  <th>Date</th>
-                  <th>Heure</th>
-                  <th>Type</th>
-                  <th>Réception</th>
-                  <th>Nom</th>
-                  <th>Prénom</th>
-                  <th>Donnée</th>
+                  <td><?php echo htmlspecialchars($row['code']); ?></td>
+                  <td><?php echo $row['etat_rfid'] == 1 ? 'Autorisé' : 'Refusé'; ?></td>
+                  <td><?php echo htmlspecialchars($row['nom']); ?></td>
+                  <td><?php echo htmlspecialchars($row['prenom']); ?></td>
                 </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>09/04/2025</td>
-                  <td>14:23</td>
-                  <td>RFID</td>
-                  <td>OK</td>
-                  <td>Turing</td>
-                  <td>Alan</td>
-                  <td>aF93cB71eD2kXz</td>
-                </tr>
-                <tr>
-                  <td>09/04/2025</td>
-                  <td>14:26</td>
-                  <td>RFID</td>
-                  <td>OK</td>
-                  <td>Zuckerberg</td>
-                  <td>Mark</td>
-                  <td>d7F3kG92xP1qZt</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+              <?php endforeach; ?>
+            <?php else : ?>
+              <tr>
+                <td colspan="4" class="text-center">Aucune donnée RFID trouvée.</td>
+              </tr>
+            <?php endif; ?>
+          </tbody>
+        </table>
       </div>
     </div>
-  </div>
   </div>
 
   <!-- Bootstrap JS (facultatif) -->
