@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Redirige vers /src/login.php si l'URL est exactement /
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^$ /src/login.php [L,R=302]

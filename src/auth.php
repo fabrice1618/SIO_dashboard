@@ -1,13 +1,14 @@
 <?php
 session_start();
-require 'config.php';
+require_once("database.php");
 
+openDatabase();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $identifiant = $_POST['identifiant'];
     $password = $_POST['password'];
 
     $sql = "SELECT * FROM utilisateur WHERE identifiant = :identifiant AND password = :password";
-    $stmt = $pdo->prepare($sql);
+    $stmt = $bdd->prepare($sql);
     $stmt->execute([
         ':identifiant' => $identifiant,
         ':password' => $password
@@ -15,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($stmt->rowCount() === 1) {
         $_SESSION['user'] = $identifiant;
-        header("Location: dashboard.html");
+        header("Location: P2_dashboard.php");
         exit;
     } else {
         $_SESSION['error'] = "identifiant ou mot de passe incorrect.";
